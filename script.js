@@ -9,21 +9,25 @@ window.addEventListener ("load", (event) => {
     fetch("https://handlers.education.launchcode.org/static/astronauts.json").then(function(response) 
     {
         response.json().then( function(json){
-            const astronauts = document.getElementById("container");
-            return 0;
-            // astronauts.innerHTML = `
-            // <div class="astronaut">
-            // <div class="bio">
-            //     <h3>Mae Jemison</h3>
-            //     <ul>
-            //         <li>Hours in space: 190</li>
-            //         <li>Active: false</li>
-            //         <li>Skills: Physician, Chemical Engineer</li>
-            //     </ul>
-            // </div>
-            // <img class="avatar" src="images/mae-jemison.jpg">
-            // </div>
-            //     `;
+            const container = document.getElementById("container");
+
+            console.log(json);
+            
+            for (let i = 0; i < json.length; i++) {
+                container.innerHTML += `
+                    <div class="astronaut">
+                    <div class="bio">
+                        <h3>${json[i].firstName} ${json[i].lastName}</h3>
+                        <ul>
+                            <li>Hours in space: ${json[i].hoursInSpace}</li>
+                            <li>Active: ${json[i].active}</li>
+                            <li>Skills: ${json[i].skills}</li>
+                        </ul>
+                    </div>
+                        <img class="avatar" src="images/${json[i].picture}">
+                    </div>
+                `;
+            }
         });
     });
 });
@@ -44,3 +48,29 @@ window.addEventListener ("load", (event) => {
 //        </ul>
 //     `;
 //  });
+
+// {
+//     "id": 1,
+//     "active": false,
+//     "firstName": "Mae",
+//     "lastName": "Jemison",
+//     "skills": [
+//           "Physician", "Chemical Engineer"
+//     ],
+//     "hoursInSpace": 190,
+//     "picture": "mae-jemison.jpg"
+//  },
+
+// //don't use this. astronauts.innerHTML = `
+// <div class="astronaut">
+// <div class="bio">
+//     <h3>Mae Jemison</h3>
+//     <ul>
+//         <li>Hours in space: 190</li>
+//         <li>Active: false</li>
+//         <li>Skills: Physician, Chemical Engineer</li>
+//     </ul>
+// </div>
+// <img class="avatar" src="images/mae-jemison.jpg">
+// </div>
+//     `;
