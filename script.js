@@ -24,7 +24,7 @@ window.addEventListener ("load", (event) => {
                             <li>Skills: ${json[i].skills}</li>
                         </ul>
                     </div>
-                        <img class="avatar" src="images/${json[i].picture}">
+                        <img class="avatar" src="${json[i].picture}">
                     </div>
                 `;
             }
